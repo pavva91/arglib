@@ -21,9 +21,11 @@ package arglib
 
 import (
 	"errors"
+	"fmt"
 	"strconv"
 )
 
+// var complexInteractionsLog = log.Logger{}("complexInteractions")
 func ArgumentSizeVerification(args []string, numberOfArguments int) error {
 	if len(args) != numberOfArguments {
 		return errors.New("Incorrect number of arguments. Expecting " + string(numberOfArguments))
@@ -42,6 +44,9 @@ func ArgumentSizeLimitVerification(args []string, numberOfArguments int) error {
 // ========================================================
 func SanitizeArguments(args []string) error {
 	for i, arg := range args {
+		fmt.Print(i)
+		fmt.Println(arg)
+
 		if len(arg) <= 0 {
 			return errors.New("Argument " + strconv.Itoa(i) + " must be a non-empty string")
 		}
